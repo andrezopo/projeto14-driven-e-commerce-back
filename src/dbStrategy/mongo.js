@@ -11,4 +11,4 @@ mongoClient.connect().then(() => {
   db = mongoClient.db("organistore");
 });
 
-export default { db, ObjectId };
+export { db, ObjectId };
