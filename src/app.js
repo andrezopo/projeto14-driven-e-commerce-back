@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helloRouter from "./routes/helloRouter.js";
 import authRouter from "./routes/authRouter.js";
-import userFeaturesRouter from "./routes/userFeaturesRouter.js"
+import productRouter from "./routes/productRouter.js"
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use([express.json(), cors()]);
 app.use(helloRouter);
 app.use(authRouter);
 
-app.use(userFeaturesRouter)
+app.use(productRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Servidor rodando na porta ${process.env.PORT}`);
