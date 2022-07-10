@@ -12,10 +12,22 @@ export async function createProduct(request, response) {
 }
 
 export async function showProducts(request, response) {
-  try {
-    const products = await db.collection("products").find().toArray();
-    response.status(201).send(products);
-  } catch (error) {
-    response.status(500).send();
+  let categoria = request.headers.categoria;
+  categoria = categoria.toLowerCase()
+
+  if (categoria === "todos"){
+    try {
+      const products = await db.collection("products").find().toArray();
+      response.status(201).send(products);
+    } catch (error) {
+      response.status(500).send();
+    }
+  } else {
+    try {
+      const products = await db.collection("products").find({categoria: categoria}).toArray();
+      response.status(201).send(products);
+    } catch (error) {
+      response.status(500).send();
+    }
   }
 }
