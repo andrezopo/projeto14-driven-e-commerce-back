@@ -2,7 +2,6 @@
   "name": "e-commerce-back",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node ./src/app.js",
@@ -23,5 +22,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrezopo/projeto14-driven-e-commerce-back.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andrezopo/projeto14-driven-e-commerce-back/issues"
+  },
+  "homepage": "https://github.com/andrezopo/projeto14-driven-e-commerce-back#readme",
+  "description": ""
 }
