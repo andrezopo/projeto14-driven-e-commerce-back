@@ -18,6 +18,7 @@ async function validateUser(request, response, next) {
 
   if (!user) {
     response.status(404).send("Não autorizado");
+    return;
   }
 
   if (email !== user.email) {
