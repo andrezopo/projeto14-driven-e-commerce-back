@@ -13,8 +13,12 @@ export async function addToCard(request, response) {
     categoria: produto.categoria,
   };
 
+  console.log(produtoCarrinho)
+
   try {
     const produtoRepetido = await db.collection("carrinho").find({descricao: produto.descricao}).toArray()
+
+    console.log(produtoRepetido)
 
     if (produtoRepetido.length !== 0){
         response.status(400).send("Produto já adicionado ao carrinho. Tente inserir um produto diferente.")
