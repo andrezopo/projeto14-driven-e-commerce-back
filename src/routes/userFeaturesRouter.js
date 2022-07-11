@@ -44,6 +44,7 @@ router.post(
     } else {
       next();
     }
+    next();
   },
   confirmPurchase
 );
