@@ -20,4 +20,8 @@ router.put(
   changePassword
 );
 
+router.get("/senha", validateUser, (req, res) => {
+  res.status(200).send();
+});
+
 export default router;
