@@ -60,3 +60,21 @@ export async function changePassword(req, res) {
 
   res.status(200).send("Senha atualizada com sucesso!");
 }
+
+export async function confirmPurchase(req, res) {
+  try {
+    const purchase = req.body;
+    const { email } = res.locals.usuario;
+
+    await db.collection("compras").insertOne({
+      ...purchase,
+      email,
+    });
+
+    res.status(201).send("Compra realizada com sucesso!");
+    return;
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Erro interno!");
+  }
+}
