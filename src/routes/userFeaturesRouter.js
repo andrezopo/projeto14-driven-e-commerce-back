@@ -33,4 +33,6 @@ router.post(
   confirmPurchase
 );
 
+router.get("/checkout", (req, res) => res.status(200).send("OK!"));
+
 export default router;
