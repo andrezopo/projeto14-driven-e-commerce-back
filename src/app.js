@@ -5,6 +5,7 @@ import helloRouter from "./routes/helloRouter.js";
 import authRouter from "./routes/authRouter.js";
 import productRouter from "./routes/productRouter.js";
 import userFeaturesRouter from "./routes/userFeaturesRouter.js";
+import verifyExpiredTokens from "./middlewares/verifyExpiredTokens.js";
 
 dotenv.config();
 
