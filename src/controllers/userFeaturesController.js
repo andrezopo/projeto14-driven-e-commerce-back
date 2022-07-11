@@ -13,7 +13,7 @@ export async function addToCard(request, response) {
     categoria: produto.categoria,
   };
 
-  console.log(produtoCarrinho)
+  console.log(produtoCarrinho);
 
   try {
     const produtoRepetido = await db
