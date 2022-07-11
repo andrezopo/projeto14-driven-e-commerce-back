@@ -6,6 +6,7 @@ import {
   deleteProduct,
   changePassword,
   confirmPurchase,
+  updateProduct,
 } from "../controllers/userFeaturesController.js";
 import validateUser from "../middlewares/validateUser.js";
 import validateBody from "../middlewares/validateBodySchema.js";

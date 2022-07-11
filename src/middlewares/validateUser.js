@@ -9,6 +9,7 @@ async function validateUser(request, response, next) {
 
   if (!usuario) {
     response.status(422).send();
+    console.log("passei aqui");
     return;
   }
 
