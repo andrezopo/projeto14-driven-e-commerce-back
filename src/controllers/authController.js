@@ -57,3 +57,25 @@ export async function signIn(req, res) {
     res.status(500).send("Erro interno!");
   }
 }
+
+export async function updateToken(req, res) {
+  try {
+    const { id } = req.headers;
+
+    const session = await db
+      .collection("sessoes")
+      .findOne({ id: ObjectId(id) });
+
+    await db.collection("sessoes").updateOne(
+      { id: ObjectId(id) },
+      {
+        $set: {
+          time: Date.now(),
+        },
+      }
+    );
+    res.status(200).send();
+  } catch (err) {
+    res.status(500).send("Erro interno!");
+  }
+}
