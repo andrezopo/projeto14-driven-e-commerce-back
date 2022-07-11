@@ -38,7 +38,13 @@ router.get("/senha", validateUser, (req, res) => {
 router.post(
   "/checkout",
   validateUser,
-  validateBody(purchaseSchema),
+  (req, res, next) => {
+    if (req.body.option === "Cartao") {
+      validateBody(purchaseSchema);
+    } else {
+      next();
+    }
+  },
   confirmPurchase
 );
 
