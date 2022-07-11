@@ -21,6 +21,8 @@ router.get("/carrinho", validateUser, showProducts);
 
 router.delete("/carrinho", deleteProduct);
 
+router.put("/carrinho", updateProduct);
+
 router.put(
   "/senha",
   validateUser,
