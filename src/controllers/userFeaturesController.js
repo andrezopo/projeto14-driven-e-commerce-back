@@ -11,6 +11,8 @@ export async function addToCard(request, response) {
     valor: produto.valor,
     descricao: produto.descricao,
     categoria: produto.categoria,
+    quantidade: produto.quantidade,
+    valorTotal: produto.valorTotal,
   };
 
   console.log(produtoCarrinho);
@@ -67,6 +69,27 @@ export async function deleteProduct(request, response) {
       .collection("carrinho")
       .deleteOne({ _id: ObjectId(idproduto) });
     response.status(201).send(produtoDeletado);
+  } catch (error) {
+    response.status(500).send();
+  }
+}
+
+export async function updateProduct(request, response) {
+  const produto = request.body;
+
+  console.log(produto)
+
+  try {
+    const produtoAtualizado = await db.collection("carrinho").updateOne(
+      { descricao: produto.descricao },
+      {
+        $set: {
+          quantidade: produto.quantidade,
+          valorTotal: produto.valorTotal,
+        },
+      }
+    );
+    response.status(201).send(produtoAtualizado);
   } catch (error) {
     response.status(500).send();
   }
