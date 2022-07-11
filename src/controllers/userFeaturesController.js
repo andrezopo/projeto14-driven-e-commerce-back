@@ -77,7 +77,7 @@ export async function deleteProduct(request, response) {
 export async function updateProduct(request, response) {
   const produto = request.body;
 
-  console.log(produto)
+  console.log(produto);
 
   try {
     const produtoAtualizado = await db.collection("carrinho").updateOne(

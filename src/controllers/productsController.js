@@ -32,7 +32,7 @@ export async function showProducts(request, response) {
     categoria !== "ovos" &&
     categoria !== "carnes"
   ) {
-    response.status(422).send("passei aqui carrinho");
+    response.status(422).send();
     return;
   }
 

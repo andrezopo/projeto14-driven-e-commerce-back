@@ -3,10 +3,12 @@ import jwt from "jsonwebtoken";
 
 async function validateUser(request, response, next) {
   const { authorization, id } = request.headers;
-  const token = authorization.replace("Bearer ", "");
+  const token = authorization?.replace("Bearer ", "");
 
-  if (!token) {
-    response.status(422).send("olha eu aqui");
+  const usuario = await db.collection("sessoes").findOne({ token });
+
+  if (!usuario) {
+    response.status(422).send();
     return;
   }
 
