@@ -5,7 +5,7 @@ async function validateUser(request, response, next) {
   const { authorization, id } = request.headers;
   const token = authorization?.replace("Bearer ", "");
 
-  const usuario = await db.collection("sessoes").findOne({ _id: ObjectId(id) });
+  const usuario = await db.collection("sessoes").findOne({ token: token });
 
   if (!usuario) {
     response.status(422).send("passei aqui");
