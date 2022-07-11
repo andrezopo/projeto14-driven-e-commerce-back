@@ -21,8 +21,6 @@ export async function addToCard(request, response) {
       .find({ descricao: produto.descricao })
       .toArray();
 
-    console.log(produtoRepetido);
-
     if (produtoRepetido.length !== 0) {
       response
         .status(400)
@@ -72,4 +70,28 @@ export async function deleteProduct(request, response) {
   } catch (error) {
     response.status(500).send();
   }
+}
+
+export async function changePassword(req, res) {
+  const { newPassword } = req.body;
+
+  const user = res.locals.usuario;
+
+  const dbUser = await db.collection("usuarios").findOne({ email: user.email });
+
+  if (dbUser.password === newPassword) {
+    res.status(422).send("É necessário colocar uma senha diferente da atual!");
+    return;
+  }
+
+  await db.collection("usuarios").updateOne(
+    { email: user.email },
+    {
+      $set: {
+        password: newPassword,
+      },
+    }
+  );
+
+  res.status(200).send("Senha atualizada com sucesso!");
 }
