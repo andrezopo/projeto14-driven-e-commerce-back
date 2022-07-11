@@ -129,6 +129,8 @@ export async function confirmPurchase(req, res) {
       email,
     });
 
+    await db.collection("carrinho").deleteMany({ email });
+
     res.status(201).send("Compra realizada com sucesso!");
     return;
   } catch (err) {
