@@ -41,10 +41,10 @@ router.post(
   (req, res, next) => {
     if (req.body.option === "Cartao") {
       validateBody(purchaseSchema);
+      next();
     } else {
       next();
     }
-    next();
   },
   confirmPurchase
 );
