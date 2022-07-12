@@ -21,6 +21,10 @@ export async function showProducts(request, response) {
   }
 
   let categoria = request.headers.categoria;
+  if (typeof categoria !== "string") {
+    response.status(400).send("É necessário passar uma categoria!");
+    return;
+  }
   categoria = categoria.toLowerCase();
 
   if (
